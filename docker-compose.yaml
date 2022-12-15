@@ -1,0 +1,22 @@
+version: "3.5"
+services:
+  db:
+    container_name: db
+    image: postgres:13.9-alpine3.17
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: my_db
+    volumes:
+      - ./postgres_data:/var/lib/postgres/postgres_data
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    container_name: pgadmin1
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.admin
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
